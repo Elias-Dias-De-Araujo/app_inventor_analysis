@@ -1,5 +1,0 @@
-Submissões válidas
-(Get-ChildItem -Directory | Where-Object { ($_.Name -like '*_contain_aia*') -and ($_.Name -notlike '*_not*') }).Count
-
-Submissões inválidas
-(Get-ChildItem -Directory | Where-Object { $_.Name -like '*_not_contain_aia*' }).Count

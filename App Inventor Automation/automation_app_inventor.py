@@ -44,7 +44,10 @@ def analise_bky(data_bky):
         "lists_is_empty": "list",
         "list_operations": "list_operations",
         "component_method": "component_method",
-        "component_set_get": "component_set_get"
+        "component_set_get": "component_set_get",
+        "helpers_assets": "helpers_assets",
+        "lexical_variable_set": "lexical_variable_set",
+        "lexical_variable_get": "lexical_variable_get"
     }
 
     block_type_counts = {block_type: 0 for block_type in block_types_component_event.values()}
@@ -62,10 +65,8 @@ def analise_bky(data_bky):
                             else_attr = mutation.get('else')
                             elseif_attr = mutation.get('elseif')
                             if else_attr is not None:
-                                print("chegou")
                                 block_type_counts["else"] += int(else_attr)
                             if elseif_attr is not None:
-                                print("chegou")
                                 block_type_counts["elseif"] += int(elseif_attr)
                     elif block_type == "controls_choose":
                         block_type_counts["else"] += 1

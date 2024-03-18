@@ -147,7 +147,7 @@ const differ = (left: QuestionItem[], right: QuestionItem[]): Differ => {
 }
 
 const bootstrapExec = async () => {
-    // Read names of folders in projects folder
+    // lê o nome de todas as pastas na pasta fdr_projects
     const { questions, submissions } = await getItems()
 
     const { questionsData, submissionsData } = await dataset(
@@ -181,7 +181,7 @@ async function main() {
             for (const item of submission.items) {
                 const diff = differ(item.questions, question.items)
 
-                if (diff.items.every((x) => x.differ === 0)) {
+                if (diff.items.every((x) => x.differ >= 0)) {
                     founded = true
                     break
                 }
@@ -217,13 +217,11 @@ async function main() {
 
     console.log(resultSubmissions)
 
-    // Initialize a count variable to keep track of the keys with ['Q1']
     const length = 3
     var countQOnly = Array.from({ length }, () => 0);
 
-    // Loop through the keys in the data object
+    // Loop atrávez das chaves no data object
     for (const key in resultSubmissions) {
-        // Check if the value associated with the key is exactly ['Q1']
         if (resultSubmissions[key].length === 1 && resultSubmissions[key][0] === 'Q1') {
             countQOnly[0]++
         }else if(resultSubmissions[key].length === 1 && resultSubmissions[key][0] === 'Q2') {
@@ -232,9 +230,9 @@ async function main() {
             countQOnly[2]++
         }
     }
-    for (let index = 0; index < countQOnly.length; index++) {
-        //console.log(`Q${index+1}: ${countQOnly[index]}`)
-    }
+    // for (let index = 0; index < countQOnly.length; index++) {
+    //     //console.log(`Q${index+1}: ${countQOnly[index]}`)
+    // }
 }
 
 main()

@@ -1,7 +1,7 @@
 import os
 import glob
 
-# Function to remove all zip files in a directory and its subdirectories
+# Função para remover todos os arquivos zip em um diretório e em seus subdiretórios
 def remove_zip_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -10,8 +10,8 @@ def remove_zip_files(directory):
                 os.remove(file_path)
                 print(f"Deleted: {file_path}")
 
-# Specify the directory where you want to remove zip files
+# Diretório para efetuar a remoção dos arquivos zip
 directory_to_search = 'C:/Users/elias/Desktop/www/fdr_projecsts'
 
-# Call the function to remove zip files
+# Chamada de função para remover os arquivos zip
 remove_zip_files(directory_to_search)
